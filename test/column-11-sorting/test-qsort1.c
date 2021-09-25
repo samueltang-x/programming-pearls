@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../../src/column-11-sorting/isort1.c"
+#include "../../src/column-11-sorting/qsort1.c"
 
-// void print_arr(int *arr, int len) {
-//     for (int i = 0; i < len; i++)
-//         printf("%d%c", arr[i], i == (len-1) ? '\n' : ',');
-// }
+void print_arr(int *arr, int len) {
+    for (int i = 0; i < len; i++)
+        printf("%d%c", arr[i], i == (len-1) ? '\n' : ',');
+}
 
 int main() {
     int i;
@@ -26,9 +26,9 @@ int main() {
     // printf("original array:\n");
     // print_arr(randoms, TEST_ARR_LEN);
 
-    isort1(randoms, TEST_ARR_LEN);
+    qsort1(&randoms[0], &randoms[0] + TEST_ARR_LEN - 1);
 
-    // printf("after sort:\n");
+    // printf("after qsort1:\n");
     // print_arr(randoms, TEST_ARR_LEN);
 
     return 0;

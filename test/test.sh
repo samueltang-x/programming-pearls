@@ -43,8 +43,11 @@ function test() {
         -o ${output_file}
 
     INFO "executing test: ${output_file} ..."
+    local ns_start=$(date '+%s%N')
     ${output_file}
-    INFO "finished test ${output_file}, exit code: $?"
+    local ns_end=$(date '+%s%N')
+    local run_time=$(echo "scale=9; (${ns_end} - ${ns_start}) / 1000000000" | bc)
+    INFO "finished test ${output_file}, run time: ${run_time} s, exit code: $?"
 }
 
 test $1
