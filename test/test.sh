@@ -26,6 +26,11 @@ logger DEBUG "logger module loaded."
 function test() {
 
     local target_file=$(find test/ -name test-${1}.c)
+    if [[ -z $target_file ]]; then
+        ERROR "test file not found: test-${1}.c"
+        exit 1;
+    fi
+
     local test_dir=$(dirname $target_file)
     local test_folder=$(basename $test_dir)
     local test_dir=$(dirname $test_dir)
